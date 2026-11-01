@@ -1,0 +1,14 @@
+[
+  {
+    "name": "brainros",
+    "captured": false,
+    "error": "Error: HTTP 403 Brainros — Smarter Online Exams. Better Student Performance."
+  },
+  {
+    "name": "shred-himalayas",
+    "url": "https://shredhimalayas.com/",
+    "title": "Shred Himalayas — Premium Himalayan Adventures & Ski Experiences in Kashmir",
+    "status": 200,
+    "captured": true
+  }
+]

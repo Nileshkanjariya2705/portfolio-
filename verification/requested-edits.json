@@ -1,0 +1,81 @@
+[
+  {
+    "viewport": 320,
+    "width": 320,
+    "scrollWidth": 902,
+    "display": "flex",
+    "centers": [
+      345.9609375,
+      345.9609375,
+      345.9609375,
+      345.9609375,
+      345.9609375,
+      345.9609375
+    ],
+    "pageOverflow": false,
+    "keyboardScroll": 299
+  },
+  {
+    "viewport": 390,
+    "width": 390,
+    "scrollWidth": 902,
+    "display": "flex",
+    "centers": [
+      346.2578125,
+      346.2578125,
+      346.2578125,
+      346.2578125,
+      346.2578125,
+      346.2578125
+    ],
+    "pageOverflow": false,
+    "keyboardScroll": 397
+  },
+  {
+    "viewport": 505,
+    "width": 505,
+    "scrollWidth": 902,
+    "display": "flex",
+    "centers": [
+      346.0390625,
+      346.0390625,
+      346.0390625,
+      346.0390625,
+      346.0390625,
+      346.0390625
+    ],
+    "pageOverflow": false,
+    "keyboardScroll": 397
+  },
+  {
+    "viewport": 768,
+    "width": 768,
+    "scrollWidth": 925,
+    "display": "flex",
+    "centers": [
+      345.8515625,
+      345.8515625,
+      345.8515625,
+      345.8515625,
+      345.8515625,
+      345.8515625
+    ],
+    "pageOverflow": false,
+    "keyboardScroll": 157
+  },
+  {
+    "viewport": 1440,
+    "width": 1376,
+    "scrollWidth": 1376,
+    "display": "flex",
+    "centers": [
+      343.4921875,
+      343.4921875,
+      343.4921875,
+      343.4921875,
+      343.4921875,
+      343.4921875
+    ],
+    "pageOverflow": false
+  }
+]

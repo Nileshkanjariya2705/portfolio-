@@ -1,0 +1,682 @@
+/* NK motion language: deliberate entrances, spring interactions, quiet ambient
+   movement. Content stays in normal flow and remains visible without JS. */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #dbe8ff65, transparent 65%);
+}
+.hero::before {
+  right: -100px;
+  top: 40px;
+  animation: ambient-drift 18s ease-in-out infinite alternate;
+}
+.hero::after {
+  left: -400px;
+  bottom: -250px;
+  background: radial-gradient(circle, #e5eeff80, transparent 65%);
+  animation: ambient-drift 23s ease-in-out -9s infinite alternate-reverse;
+}
+.hero-title-line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
+.hero-title-line > span {
+  display: block;
+  animation: title-enter 0.85s var(--motion-ease) both;
+}
+.hero-title-line:nth-child(1) > span {
+  animation-delay: 0.12s;
+}
+.hero-title-line:nth-child(2) > span {
+  animation-delay: 0.24s;
+}
+.hero-title-line:nth-child(3) > span {
+  animation-delay: 0.36s;
+}
+.hero-eyebrow {
+  animation: soft-enter 0.65s var(--motion-ease) 0.05s both;
+}
+.hero-description {
+  animation: soft-enter 0.75s var(--motion-ease) 0.5s both;
+}
+.hero-actions {
+  animation: soft-enter 0.75s var(--motion-ease) 0.62s both;
+}
+.hero-signoff {
+  animation: soft-enter 0.75s var(--motion-ease) 0.73s both;
+}
+.hero-art-wrap {
+  animation: scene-enter 1.1s var(--motion-ease) 0.24s both;
+}
+.forward-word svg path {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 0;
+  animation: draw-underline 0.9s var(--motion-ease) 1s both;
+}
+.availability-dot::after {
+  animation: signal-ring 3.5s ease-out 1.5s infinite;
+}
+.art-perspective {
+  perspective: 1000px;
+}
+.art-tilt {
+  transform-style: preserve-3d;
+}
+.architecture {
+  animation: float-stack 7s ease-in-out infinite;
+}
+.floating-code {
+  animation: float-code 8s ease-in-out infinite;
+}
+.floating-tag {
+  animation: float-tag 9s ease-in-out infinite;
+}
+.orbit-one {
+  animation: orbit-journey 28s linear infinite;
+}
+.orbit-two {
+  animation: orbit-journey-reverse 36s linear infinite;
+}
+.orbit::after {
+  content: "";
+  position: absolute;
+  top: 11%;
+  left: 16%;
+  width: 6px;
+  height: 6px;
+  background: #7ba7f4;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #a8c9ff20;
+}
+.orbit-two::after {
+  width: 4px;
+  height: 4px;
+  background: #9bb7e8;
+}
+.layer-connector span {
+  position: relative;
+}
+.layer-connector span::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 3px;
+  height: 5px;
+  background: #6796f1;
+  border-radius: 3px;
+  opacity: 0;
+  animation: data-flow 3.2s ease-in-out infinite;
+}
+.layer-connector span:nth-child(2)::after {
+  animation-delay: 0.4s;
+}
+.layer-connector span:nth-child(3)::after {
+  animation-delay: 0.8s;
+}
+.layer-connector:nth-of-type(4) span::after {
+  animation-delay: 1.4s;
+}
+.code-body p {
+  animation: code-line 0.65s var(--motion-ease) both;
+}
+.code-body p:nth-child(1) {
+  animation-delay: 0.9s;
+}
+.code-body p:nth-child(2) {
+  animation-delay: 1.05s;
+}
+.code-body p:nth-child(3) {
+  animation-delay: 1.2s;
+}
+.code-body p:nth-child(4) {
+  animation-delay: 1.35s;
+}
+.code-status > span::after {
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+  width: 4px;
+  height: 8px;
+  background: #5b8bc8;
+  vertical-align: -1px;
+  animation: code-caret 1.4s steps(2, jump-none) infinite;
+}
+.monogram {
+  overflow: hidden;
+  transition:
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+.monogram::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    #ffffff35 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%) rotate(-15deg);
+  transition: transform 0.75s var(--motion-ease);
+}
+.brand:hover .monogram,
+.brand:focus-visible .monogram {
+  transform: translateY(-2px) rotate(-3deg);
+  box-shadow: 0 8px 20px #2563eb35;
+}
+.brand:hover .monogram::after,
+.brand:focus-visible .monogram::after {
+  transform: translateX(100%) rotate(-15deg);
+}
+.desktop-nav a {
+  transition:
+    color 0.2s,
+    background 0.2s,
+    transform 0.2s;
+}
+.desktop-nav a:hover {
+  transform: translateY(-1px);
+}
+.button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: -70%;
+  left: -80%;
+  width: 65%;
+  height: 240%;
+  transform: skewX(-22deg);
+  background: linear-gradient(90deg, transparent, #ffffff22, transparent);
+  transition: left 0.75s var(--motion-ease);
+}
+.button:hover::before,
+.button:focus-visible::before {
+  left: 150%;
+}
+.button svg,
+.text-link svg,
+.nav-cta svg,
+.contact-socials svg:last-child {
+  transition: transform 0.3s var(--motion-ease);
+}
+.button:hover svg,
+.button:focus-visible svg,
+.nav-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+.text-link:hover svg {
+  transform: translate(3px, 1px);
+}
+.text-link:hover {
+  color: #1e50c0;
+}
+.service-card {
+  transition:
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+.service-icon {
+  transition:
+    background 0.3s,
+    color 0.3s,
+    transform 0.4s var(--motion-ease);
+}
+.service-card:hover .service-icon {
+  transform: translateY(-3px) rotate(-6deg);
+  background: #dce9ff;
+}
+.service-highlight:hover .service-icon {
+  background: #1d4ec9;
+}
+.service-link svg {
+  transition: transform 0.3s var(--motion-ease);
+}
+.service-link:hover svg {
+  transform: translate(2px, -2px);
+}
+.stack-group {
+  transition:
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+.stack-group:hover {
+  border-color: #b8cef5;
+  box-shadow: 0 10px 24px #20386508;
+}
+.skill-tags > span {
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.25s;
+}
+.skill-tags > span:hover {
+  transform: translateY(-2px);
+}
+.tech-logo {
+  transition:
+    color 0.25s,
+    transform 0.25s;
+}
+.tech-logo:hover {
+  color: #2563eb;
+  transform: translateY(-3px);
+}
+.react-logo:hover svg {
+  animation: react-turn 5s linear infinite;
+}
+.projects-grid {
+  position: relative;
+}
+.project-card {
+  transform-origin: 50% 40%;
+}
+.project-card:focus-within {
+  border-color: #87abf4;
+  box-shadow: 0 8px 28px #2563eb12;
+}
+.project-image-arrow {
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.4s var(--motion-ease);
+}
+.project-image-link:hover .project-image-arrow {
+  transform: rotate(5deg) scale(1.06);
+}
+.project-filters button {
+  position: relative;
+  isolation: isolate;
+}
+.project-filters button.active {
+  background: transparent;
+  box-shadow: none;
+}
+.project-filters button > .filter-indicator {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  margin: 0;
+  border-radius: 9px;
+  background: white;
+  box-shadow: 0 2px 7px #1b367218;
+}
+.project-filters button:active {
+  transform: scale(0.98);
+}
+.about-art-ring {
+  animation: identity-orbit 45s linear infinite;
+}
+.about-art-ring::before {
+  animation: identity-orbit-inner 60s linear infinite reverse;
+}
+.giant-monogram {
+  transition:
+    text-shadow 0.5s,
+    filter 0.5s;
+}
+.about-art:hover .giant-monogram {
+  text-shadow: 0 12px 50px #7fabff30;
+}
+.about-art {
+  transition: box-shadow 0.4s;
+}
+.about-art:hover {
+  box-shadow: 0 25px 60px #172e6429;
+}
+.process-step {
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+.process-step::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #2563eb, #9abaff);
+  transition: transform 1s var(--motion-ease) 0.2s;
+}
+.process-step[data-revealed="true"]::after {
+  transform: scaleX(1);
+}
+.process-step:hover {
+  border-color: #c0d3f8;
+  box-shadow: 0 10px 30px #233f7010;
+}
+.step-number > span {
+  transition: color 0.3s;
+}
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  transition:
+    border-color 0.2s,
+    box-shadow 0.3s,
+    background 0.2s;
+}
+.contact-email svg,
+.footer-wordmark svg {
+  transition: transform 0.35s var(--motion-ease);
+}
+.contact-email:hover svg,
+.footer-wordmark:hover svg {
+  transform: translate(3px, -3px);
+}
+.footer-socials > a {
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.3s var(--motion-ease);
+}
+.footer-socials > a:hover {
+  transform: translateY(-3px);
+}
+
+/* A small, persistent way to control animation and return to the top. */
+.reading-progress {
+  position: fixed;
+  z-index: 75;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: left;
+  background: linear-gradient(90deg, #2563eb, #70a3ff);
+  pointer-events: none;
+}
+.motion-controls {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.motion-control {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d5dfef;
+  border-radius: 12px;
+  background: #ffffffed;
+  color: #405b82;
+  box-shadow: 0 4px 18px #152e6012;
+  backdrop-filter: blur(12px);
+  transition:
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.motion-control:hover {
+  background: #edf3ff;
+  color: #1e50c0;
+  box-shadow: 0 5px 20px #2563eb20;
+}
+.motion-control:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+.back-to-top {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+.back-to-top:hover {
+  background: #1e50c0;
+  color: white;
+}
+
+@keyframes title-enter {
+  from {
+    transform: translateY(100%);
+    opacity: 0.1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes soft-enter {
+  from {
+    transform: translateY(18px);
+    opacity: 0.15;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes scene-enter {
+  from {
+    transform: translateY(22px) scale(0.96);
+    opacity: 0.15;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes draw-underline {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  to {
+    transform: translate3d(-70px, 45px, 0) scale(1.12);
+  }
+}
+@keyframes signal-ring {
+  0%,
+  25% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+@keyframes float-tag {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+}
+@keyframes orbit-journey {
+  from {
+    transform: translate(-50%, -50%) rotateX(55deg) rotateZ(-33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(55deg) rotateZ(327deg);
+  }
+}
+@keyframes orbit-journey-reverse {
+  from {
+    transform: translate(-50%, -50%) rotateX(58deg) rotateZ(35deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(58deg) rotateZ(-325deg);
+  }
+}
+@keyframes data-flow {
+  0%,
+  10% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20%,
+  65% {
+    opacity: 0.85;
+  }
+  85%,
+  100% {
+    transform: translateY(21px);
+    opacity: 0;
+  }
+}
+@keyframes code-line {
+  from {
+    transform: translateX(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes code-caret {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+@keyframes react-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes identity-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(-20deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(340deg);
+  }
+}
+@keyframes identity-orbit-inner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title-line {
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
+  }
+  .hero::before {
+    width: 400px;
+    height: 400px;
+    top: 100px;
+    right: -170px;
+  }
+  .motion-controls {
+    right: 13px;
+    bottom: 13px;
+    gap: 7px;
+  }
+  .motion-control {
+    width: 39px;
+    height: 39px;
+    border-radius: 11px;
+  }
+  .art-tilt {
+    transform: none !important;
+  }
+}
+
+/* Pausing restores the final readable state, including mid-entrance text. */
+html:not([data-motion]) .motion-controls {
+  display: none;
+}
+html:not([data-motion]) .architecture,
+html:not([data-motion]) .floating-code,
+html:not([data-motion]) .floating-tag,
+html:not([data-motion]) .orbit,
+html:not([data-motion]) .about-art-ring,
+html:not([data-motion]) .about-art-ring::before,
+html:not([data-motion]) .layer-connector span::after,
+html:not([data-motion]) .code-status > span::after,
+html:not([data-motion]) .availability-dot::after,
+html:not([data-motion]) .hero::before,
+html:not([data-motion]) .hero::after {
+  animation: none;
+}
+html[data-motion="paused"] *,
+html[data-motion="paused"] *::before,
+html[data-motion="paused"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+html[data-motion="paused"] {
+  scroll-behavior: auto;
+}
+html[data-motion="paused"] .hero-art-wrap {
+  transform: none;
+}
+html[data-motion="paused"] .button:hover,
+html[data-motion="paused"] .brand:hover .monogram,
+html[data-motion="paused"] .service-card:hover,
+html[data-motion="paused"] .service-icon,
+html[data-motion="paused"] .skill-tags > span:hover,
+html[data-motion="paused"] .tech-logo:hover {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero-art-wrap {
+    transform: none;
+  }
+  .button:hover,
+  .brand:hover .monogram,
+  .service-card:hover,
+  .service-icon,
+  .skill-tags > span:hover,
+  .tech-logo:hover {
+    transform: none;
+  }
+}
